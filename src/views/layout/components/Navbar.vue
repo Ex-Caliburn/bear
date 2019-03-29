@@ -38,7 +38,9 @@
 </template>
 
 <script>
+  import request from '@/api/request'
   import { mapGetters } from 'vuex'
+
   import Breadcrumb from '@/components/Breadcrumb'
   import Hamburger from '@/components/Hamburger'
   import ErrorLog from '@/components/ErrorLog'
@@ -69,6 +71,12 @@
       logout () {
         this.$store.commit('logout')
         this.routePush('login')
+        request.get('logout')
+          .then(res => {
+          }).catch(err => {
+           console.log(err)
+        })
+
         // this.$store.dispatch('LogOut').then(() => {
         //   location.reload()// In order to re-instantiate the vue-router object to avoid bugs
         // })

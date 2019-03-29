@@ -59,7 +59,7 @@
       // }
       return {
         loginForm: {
-          email: 'admin',
+          email: 'admin@qq.com',
           password: '123456'
         },
         loginRules: {
@@ -86,12 +86,12 @@
             var params = new URLSearchParams()
             params.append('email', this.loginForm.email)
             params.append('password', this.loginForm.password)
-            request.get('login', params)
+            request.post('login', params)
               .then(res => {
                 this.loading = false
                 console.log(res)
                 this.$store.commit('login', res)
-                this.routePush('audit')
+                this.routePush('userInfo')
               }).catch(err => {
                 console.log(err)
               })

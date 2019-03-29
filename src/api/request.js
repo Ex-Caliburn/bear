@@ -2,6 +2,7 @@ import Api from '@/api/api'
 import Router from '@/router/'
 import Axios from 'axios'
 import { Message } from 'element-ui'
+import router from '@/router'
 
 const baseRequest = Axios.create({})
 baseRequest.defaults.withCredentials = true
@@ -9,12 +10,13 @@ baseRequest.defaults.withCredentials = true
 
 // 对所有的数据响应检查是否登录
 baseRequest.interceptors.response.use(function (res) {
-  return Promise.resolve(res.data.msg ||res.data.data)
-  // if (res.data.code === 0) {
-  //   return Promise.resolve(res.data.msg)
-  // } else {
-  //   return Promise.reject(res.data.msg)
-  // }
+  if (res.data.err_code === 0) {
+    return Promise.resolve(res.data.data)
+  } else if (res.data.err_code === 106) {
+    router.push({ name: 'login' })
+  } else{
+    return Promise.reject(res.data.err_msg)
+  }
 }, function (error) {
   if (!error.response) {
     Router.replace('/Login')

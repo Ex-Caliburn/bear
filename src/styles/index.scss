@@ -108,8 +108,32 @@ div:focus {
   flex-direction: row;
 }
 
+.flex0 {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+}
+
 .flex-column {
   flex-direction: column;
+}
+
+.flex-vend {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.flex-vstart {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-start;
+}
+
+.flex-hend {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
 
 .flex-wrap {
@@ -283,4 +307,18 @@ code {
 }
 .grey{
   color: grey;
+}
+/* 头像 通用样式 */
+.avatar {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+// 文本省略号
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

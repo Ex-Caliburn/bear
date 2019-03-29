@@ -77,18 +77,18 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/question',
+    path: '/userInfo',
     component: Layout,
-    redirect: '/question/index',
+    redirect: '/userInfo/index',
     meta: {
-      title: 'question',
+      title: 'userInfo',
       icon: 'chart'
     },
     children: [{
-      path: 'question',
+      path: 'userInfo',
       component: _import('question/index'),
-      name: 'question',
-      meta: { title: 'question', icon: 'form', noCache: true }
+      name: 'userInfo',
+      meta: { title: 'userInfo', icon: 'form', noCache: true }
     },
       {
       hidden: true,
@@ -99,18 +99,28 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/invite',
+    path: '/coupon',
     component: Layout,
-    redirect: '/invite/index',
+    redirect: '/coupon/index',
     meta: {
-      title: 'invite',
+      title: 'coupon',
       icon: 'chart'
     },
     children: [{
-      path: 'invite',
-      component: _import('invite/index'),
-      name: 'invite',
-      meta: { title: 'invite', icon: 'form', noCache: true }
+      path: 'coupon',
+      component: _import('coupon/index'),
+      name: 'coupon',
+      meta: { title: 'coupon', icon: 'form', noCache: true }
+    },{
+      path: 'createCoupon',
+      component: _import('coupon/createCoupon'),
+      name: 'createCoupon',
+      meta: { title: 'createCoupon', icon: 'form', noCache: true }
+    },{
+      path: 'distributeCoupon',
+      component: _import('coupon/distributeCoupon'),
+      name: 'distributeCoupon',
+      meta: { title: 'distributeCoupon', icon: 'form', noCache: true }
     }]
   },
   {

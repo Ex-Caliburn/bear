@@ -38,18 +38,6 @@
         questionId: Number(this.$route.query.questionId),
         questionType: Number(this.$route.query.questionType),
         info: {
-          // "questionId": 175,
-          // "questionerId": 105,
-          // "questionerName": "阿里巴巴",
-          // "questionContent": "学长你好，请问管理类联考的答题要点和注意事项",
-          // "questionPic": "",
-          // "answerId": null,
-          // "answererId": 1349,
-          // "answerName": "林恩承测试",
-          // "answerContent": null,
-          // "answerPic": null,
-          // "questionCreatedAt": 1527597161000,
-          // "answerCreatedAt": null
         }
       }
     },
