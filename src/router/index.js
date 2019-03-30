@@ -56,25 +56,25 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/audit',
+    path: '/goods',
     component: Layout,
-    redirect: '/audit/index',
+    redirect: '/goods/index',
     meta: {
-      title: 'audit',
+      title: 'goods',
       icon: 'chart'
     },
     children: [{
       path: 'index',
-      component: _import('audit/index'),
-      name: 'audit',
-      meta: { title: 'audit', icon: 'table', noCache: true }
-    }, {
+      component: _import('goods/index'),
+      name: 'goods',
+      meta: { title: 'goods', icon: 'table', noCache: true }
+    },{
       hidden: true,
-      path: 'pSDetail',
-      component: _import('audit/pSDetail'),
-      name: 'pSDetail',
-      meta: { title: 'pSDetail', icon: 'table', noCache: true }
-    }]
+      path: 'createGoods/:id',
+      component: _import('goods/createGoods'),
+      name: 'createGoods',
+      meta: { title: 'createGoods', icon: 'table', noCache: true }
+    },]
   },
   {
     path: '/userInfo',
@@ -86,14 +86,14 @@ export const constantRouterMap = [
     },
     children: [{
       path: 'userInfo',
-      component: _import('question/index'),
+      component: _import('userInfo/index'),
       name: 'userInfo',
       meta: { title: 'userInfo', icon: 'form', noCache: true }
     },
       {
       hidden: true,
       path: 'questionDetail',
-      component: _import('question/questionDetail'),
+      component: _import('userInfo/questionDetail'),
       name: 'questionDetail',
       meta: { title: 'questionDetail', icon: 'form', noCache: true }
     }]
@@ -112,15 +112,29 @@ export const constantRouterMap = [
       name: 'coupon',
       meta: { title: 'coupon', icon: 'form', noCache: true }
     },{
-      path: 'createCoupon',
+      hidden: true,
+      path: 'createCoupon/:id',
       component: _import('coupon/createCoupon'),
       name: 'createCoupon',
       meta: { title: 'createCoupon', icon: 'form', noCache: true }
     },{
+      hidden: true,
       path: 'distributeCoupon',
       component: _import('coupon/distributeCoupon'),
       name: 'distributeCoupon',
       meta: { title: 'distributeCoupon', icon: 'form', noCache: true }
+    },{
+      hidden: true,
+      path: 'couponActivityList',
+      component: _import('coupon/couponActivityList'),
+      name: 'couponActivityList',
+      meta: { title: 'couponActivityList', icon: 'form', noCache: true }
+    },{
+      hidden: true,
+      path: 'createCouponActivity/:id',
+      component: _import('coupon/createCouponActivity'),
+      name: 'createCouponActivity',
+      meta: { title: 'createCouponActivity', icon: 'form', noCache: true }
     }]
   },
   {

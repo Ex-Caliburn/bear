@@ -12,7 +12,7 @@ baseRequest.defaults.withCredentials = true
 baseRequest.interceptors.response.use(function (res) {
   if (res.data.err_code === 0) {
     return Promise.resolve(res.data.data)
-  } else if (res.data.err_code === 106) {
+  } else if ([106, -2].includes(res.data.err_code)) {
     router.push({ name: 'login' })
   } else{
     return Promise.reject(res.data.err_msg)

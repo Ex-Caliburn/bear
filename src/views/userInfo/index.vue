@@ -104,7 +104,7 @@
   import pagination from '@/mixins/pagination'
 
   export default {
-    name: 'question',
+    name: 'userInfo',
     components: {
       ImagePreviewer
     },

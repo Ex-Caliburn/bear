@@ -1,13 +1,8 @@
 <template>
   <div class="app-container">
-    <div class="flex flex-between MB20">
-      <el-radio-group v-model="couponType" @change="init">
-        <el-radio-button  :label="1">折扣券</el-radio-button>
-        <el-radio-button  :label="2">免费体验券</el-radio-button>
-        <el-radio-button  :label="3">现金体验券</el-radio-button>
-      </el-radio-group>
 
-      <router-link class="jdk-fake-btn" :to="{name: 'createCoupon',params: {id: 0}}">新建券</router-link>
+    <div>
+      <router-link :to="{name: 'createGood',params: {id: 0}}">生成优惠券</router-link>
     </div>
 
     <el-table
@@ -15,42 +10,45 @@
       style="width: 100%">
       <el-table-column
         show-overflow-tooltip
-        label="名称"
+        label="商品名称"
         width="150"
-        prop="coupon_name">
+        prop="goods_name">
       </el-table-column>
       <el-table-column
-        label="优惠码"
+        label="价格"
         width="100"
-        prop="promotion_code">
+        prop="goods_price">
       </el-table-column>
       <el-table-column
-        label="优惠券密码"
+        label="原价"
         width="100"
-        prop="promotion_pwd">
+        prop="goods_original_price">
       </el-table-column>
-      <!--<el-table-column-->
-        <!--label="优惠券类型"-->
-        <!--width="100"-->
-        <!--prop="coupon_setting_type">-->
-      <!--</el-table-column>-->
       <el-table-column
-        label="优惠金额"
+        label="类型"
         width="100"
-        prop="coupon_money">
+        prop="goods_type">
       </el-table-column>
       <el-table-column
-        label="开始时间"
+        label="商品图片"
+        width="100"
+        prop="goods_image">
+        <template slot-scope="scope">
+          <img src="scope.row.goods_image" alt="">
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="更新时间"
         width="150"
-        prop="invite_code">
+        prop="update_at">
         <template slot-scope="scope">
           {{scope.row.coupon_start_period | dateFormat("yyyy-MM-dd hh:mm:ss")}}
         </template>
       </el-table-column>
       <el-table-column
-        label="结束时间"
+        label="创建时间"
         width="150"
-        prop="coupon_status">
+        prop="created_at">
         <template slot-scope="scope">
           {{  scope.row.coupon_end_period | dateFormat("yyyy-MM-dd hh:mm:ss") }}
         </template>
@@ -77,13 +75,9 @@
         width="100"
         prop="create_time">
         <template slot-scope="scope">
-          <!--<el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.userId)">修改-->
-          <!--</el-button>-->
-          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.coupon_id)">指定给用户
+          <el-button type="primary" size="medium" class="cur-pointer" @click="deleteGood(scope.row.goods_id)">删除
           </el-button>
-          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.coupon_id)">添加优惠券活动
-          </el-button>
-          <router-link :to="{name: 'createCoupon',params: {id: scope.row.id}}"></router-link>
+          <router-link :to="{name: 'createGood',params: {id: scope.row.goods_id}}">更新</router-link>
         </template>
       </el-table-column>
     </el-table>
@@ -97,36 +91,22 @@
       layout="->, sizes, prev, pager, next, jumper"
       :total="totalCount">
     </el-pagination>
-
-    <!-- 优惠券指定给用户 -->
-    <el-dialog
-      class=""
-      :visible.sync="dialog.distribute"
-      :close-on-click-modal="false"
-      :append-to-body="true"
-      top="10vh"
-      width="480px"
-    >
-      <userInfo></userInfo>
-    </el-dialog>
-
   </div>
 
 </template>
 
 <script>
-  import { dateFormat } from '@/utils/'
+  import avatar from '@/components/avatar'
+
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
-  import avatar from '@/components/avatar'
-  import userInfo from '@/views/userInfo/index'
+  import { dateFormat } from '@/utils/'
 
   export default {
     name: 'invite',
     components: {
-      avatar,
-      userInfo,
+      avatar
     },
     filters: {
       dateFormat
@@ -136,9 +116,6 @@
     data () {
       return {
         tableData: [],
-        dialog: {
-          distribute: false
-        },
         couponType: 1,
         searchName: ''
       }
@@ -149,14 +126,13 @@
 
     methods: {
       init () {
-        request.get('getCouponList', {
+        request.get('getGoodsList', {
           limit: this.page.pageSize,
           offset: this.page.pageNum,
-          coupon_type: this.couponType,
         })
           .then(res => {
             this.totalCount = res.count
-            this.tableData = res.coupon_list
+            this.tableData = res.data
           }).catch(err => {
           console.log(err)
         })
@@ -166,6 +142,15 @@
       },
       jumpPage () {
         this.init()
+      },
+      deleteGood (goods_id) {
+        request.get('delGoodsInfo', {
+          goods_id
+        })
+          .then(res => {
+          }).catch(err => {
+          console.log(err)
+        })
       }
     }
   }

@@ -1,13 +1,7 @@
 <template>
   <div class="app-container">
     <div class="flex flex-between MB20">
-      <el-radio-group v-model="couponType" @change="init">
-        <el-radio-button  :label="1">折扣券</el-radio-button>
-        <el-radio-button  :label="2">免费体验券</el-radio-button>
-        <el-radio-button  :label="3">现金体验券</el-radio-button>
-      </el-radio-group>
-
-      <router-link class="jdk-fake-btn" :to="{name: 'createCoupon',params: {id: 0}}">新建券</router-link>
+      <router-link class="jdk-fake-btn" :to="{name: 'createCoupon',params: {id: 0}}">添加优惠券活动</router-link>
     </div>
 
     <el-table
@@ -29,15 +23,49 @@
         width="100"
         prop="promotion_pwd">
       </el-table-column>
-      <!--<el-table-column-->
-        <!--label="优惠券类型"-->
-        <!--width="100"-->
-        <!--prop="coupon_setting_type">-->
-      <!--</el-table-column>-->
+      <el-table-column
+        label="优惠券类型"
+        width="100"
+        prop="coupon_type">
+      </el-table-column>
       <el-table-column
         label="优惠金额"
         width="100"
         prop="coupon_money">
+      </el-table-column>
+
+      <el-table-column
+        label="商品图片"
+        width="100"
+        prop="activity_image">
+        <template slot-scope="scope">
+          <img src="scope.row.goods_image" alt="">
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="商品图片"
+        width="100"
+        prop="activity_state">
+        <template slot-scope="scope">
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="优惠券活动开始时间"
+        width="150"
+        prop="invite_code">
+        <template slot-scope="scope">
+          {{scope.row.activity_start_time | dateFormat("yyyy-MM-dd hh:mm:ss")}}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="优惠券活动结束时间"
+        width="150"
+        prop="coupon_status">
+        <template slot-scope="scope">
+          {{  scope.row.activity_end_time | dateFormat("yyyy-MM-dd hh:mm:ss") }}
+        </template>
       </el-table-column>
       <el-table-column
         label="开始时间"
@@ -57,13 +85,6 @@
       </el-table-column>
 
       <el-table-column
-        show-overflow-tooltip
-        label="备注"
-        width="150"
-        prop="coupon_remarks">
-      </el-table-column>
-
-      <el-table-column
         label="创建时间"
         width="150"
         prop="create_time">
@@ -77,13 +98,42 @@
         width="100"
         prop="create_time">
         <template slot-scope="scope">
-          <!--<el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.userId)">修改-->
-          <!--</el-button>-->
-          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.coupon_id)">指定给用户
-          </el-button>
-          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.coupon_id)">添加优惠券活动
+          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.userId)">修改
           </el-button>
           <router-link :to="{name: 'createCoupon',params: {id: scope.row.id}}"></router-link>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        show-overflow-tooltip
+        label="备注"
+        width="150"
+        prop="coupon_remarks">
+      </el-table-column>
+
+      <el-table-column
+        label="更新时间"
+        width="150"
+        prop="update_at">
+        <template slot-scope="scope">
+          {{scope.row.coupon_start_period | dateFormat("yyyy-MM-dd hh:mm:ss")}}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="创建时间"
+        width="150"
+        prop="created_at">
+        <template slot-scope="scope">
+          {{  scope.row.coupon_end_period | dateFormat("yyyy-MM-dd hh:mm:ss") }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="100"
+        prop="create_time">
+        <template slot-scope="scope">
+          <el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.coupon_id)">修改
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -97,36 +147,22 @@
       layout="->, sizes, prev, pager, next, jumper"
       :total="totalCount">
     </el-pagination>
-
-    <!-- 优惠券指定给用户 -->
-    <el-dialog
-      class=""
-      :visible.sync="dialog.distribute"
-      :close-on-click-modal="false"
-      :append-to-body="true"
-      top="10vh"
-      width="480px"
-    >
-      <userInfo></userInfo>
-    </el-dialog>
-
   </div>
 
 </template>
 
 <script>
-  import { dateFormat } from '@/utils/'
+  import avatar from '@/components/avatar'
+
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
-  import avatar from '@/components/avatar'
-  import userInfo from '@/views/userInfo/index'
+  import { dateFormat } from '@/utils/'
 
   export default {
     name: 'invite',
     components: {
-      avatar,
-      userInfo,
+      avatar
     },
     filters: {
       dateFormat
@@ -136,9 +172,6 @@
     data () {
       return {
         tableData: [],
-        dialog: {
-          distribute: false
-        },
         couponType: 1,
         searchName: ''
       }
