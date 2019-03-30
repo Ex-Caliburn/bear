@@ -15,14 +15,14 @@
   export default {
     name: 'social-signin',
     methods: {
-      wechatHandleClick (thirdpart) {
+      wechatHandleClick(thirdpart) {
         this.$store.commit('SET_AUTH_TYPE', thirdpart)
         const appid = 'xxxxx'
         const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/authredirect')
         const url = 'https://open.weixin.qq.com/connect/qrconnect?appid=' + appid + '&redirect_uri=' + redirect_uri + '&response_type=code&scope=snsapi_login#wechat_redirect'
         openWindow(url, thirdpart, 540, 540)
       },
-      tencentHandleClick (thirdpart) {
+      tencentHandleClick(thirdpart) {
         this.$store.commit('SET_AUTH_TYPE', thirdpart)
         const client_id = 'xxxxx'
         const redirect_uri = encodeURIComponent('xxx/redirect?redirect=' + window.location.origin + '/authredirect')
@@ -36,15 +36,18 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .social-signup-container {
     margin: 20px 0;
+
     .sign-btn {
       display: inline-block;
       cursor: pointer;
     }
+
     .icon {
       color: #fff;
       font-size: 30px;
       margin-top: 6px;
     }
+
     .wx-svg-container,
     .qq-svg-container {
       display: inline-block;
@@ -57,11 +60,13 @@
       margin-bottom: 20px;
       margin-right: 5px;
     }
+
     .wx-svg-container {
       background-color: #8dc349;
     }
+
     .qq-svg-container {
-      background-color: #6BA2D6;
+      background-color: #6ba2d6;
       margin-left: 50px;
     }
   }

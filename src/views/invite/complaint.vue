@@ -25,7 +25,7 @@
       <el-table-column
         label="时间">
         <template slot-scope="scope">
-          {{ scope.row.created_at | dateFormat("yyyy-MM-dd hh:mm:ss")}}
+          {{ scope.row.created_at | dateFormat('yyyy-MM-dd hh:mm:ss')}}
         </template>
       </el-table-column>
     </el-table>
@@ -52,7 +52,7 @@
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
-  const complainTypeArr = ['功能异常','产品建议', '其它问题', '', '该研究生回答内容', '该研究生沟通态度问题', '其它问题']
+  const complainTypeArr = ['功能异常', '产品建议', '其它问题', '', '该研究生回答内容', '该研究生沟通态度问题', '其它问题']
 
   export default {
     components: {
@@ -63,7 +63,7 @@
       dateFormat
     },
     props: {},
-    data () {
+    data() {
       return {
         tableData: [],
         complainTypeArr,
@@ -73,12 +73,12 @@
 
     computed: {},
     watch: {},
-    mounted () {
+    mounted() {
       this.init()
     },
 
     methods: {
-      init () {
+      init() {
         request.get('getComplainList', {
           pageSize: this.page.pageSize,
           pageNum: this.page.pageNum
@@ -90,10 +90,10 @@
             this.totalCount = res.count
             this.tableData = res.data
           }).catch(err => {
-            console.log(err)
-          })
+          console.log(err)
+        })
       },
-      jumpPage () {
+      jumpPage() {
         this.init()
       }
     }

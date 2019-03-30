@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <div class="flexh flex-hend">
+    <div class="flex flex-hend MB20">
       <el-input
         placeholder="微信昵称"
         @keyup.enter.native="search()"
@@ -13,6 +13,8 @@
 
     <el-table
       :data="tableData"
+      :highlight-current-row="isDialog"
+      @current-change="handleCurrentChange"
       style="width: 100%">
       <el-table-column
         label="微信昵称"
@@ -20,7 +22,7 @@
         prop="user_name">
         <template slot-scope="scope">
           <span class="ellipsis" :title="scope.row.user_name">
-            <img  class="avatar flex0 MR10" :src="scope.row.face_url" alt="头像">
+            <img class="avatar flex0 MR10" :src="scope.row.face_url" alt="头像">
             {{ scope.row.user_name }}
           </span>
         </template>
@@ -47,7 +49,7 @@
       </el-table-column>
 
       <el-table-column
-        width="50"
+        width="80"
         prop="is_free_shipping"
         label="是否运费">
         <template slot-scope="scope">
@@ -69,19 +71,18 @@
         prop="created_at"
         label="创建时间">
         <template slot-scope="scope">
-          {{scope.row.created_at | dateFormat("yyyy-MM-dd hh:mm:ss")}}
+          {{scope.row.created_at | dateFormat('yyyy-MM-dd hh:mm:ss')}}
         </template>
       </el-table-column>
 
 
-
       <!--<el-table-column-->
-        <!--fixed="right"-->
-        <!--prop="desc" label="操作" min-width="200">-->
-        <!--<template slot-scope="scope">-->
-          <!--<el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.questionId, scope.row.questionType)">详情-->
-          <!--</el-button>-->
-        <!--</template>-->
+      <!--fixed="right"-->
+      <!--prop="desc" label="操作" min-width="200">-->
+      <!--<template slot-scope="scope">-->
+      <!--<el-button type="primary" size="medium" class="cur-pointer" @click="goDetail(scope.row.questionId, scope.row.questionType)">详情-->
+      <!--</el-button>-->
+      <!--</template>-->
       <!--</el-table-column>-->
     </el-table>
 
@@ -100,6 +101,8 @@
 
 <script>
   import request from '@/api/request'
+  import { dateFormat } from '@/utils/'
+
   import ImagePreviewer from '@/components/ImagePreviewer'
   import pagination from '@/mixins/pagination'
 
@@ -108,39 +111,51 @@
     components: {
       ImagePreviewer
     },
+    filters: {
+      dateFormat
+    },
     mixins: [pagination],
     directives: {},
-    data () {
+    props: {
+      isDialog: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data() {
       return {
         tableData: [],
         searchName: ''
       }
     },
-    mounted () {
+    mounted() {
       this.init()
     },
 
     methods: {
-      init () {
+      init() {
         request.get('userInfoList', {
           limit: this.page.pageSize,
-          offset: this.page.pageNum,
+          offset: this.page.offset,
           user_name: this.searchName,
         })
           .then(res => {
             this.totalCount = res.count
             this.tableData = res.user_info
           }).catch(err => {
-            console.log(err)
-          })
+          console.log(err)
+        })
       },
-      goDetail (id, questionType) {
+      goDetail(id, questionType) {
         this.routePush('questionDetail', { questionId: id, questionType })
       },
-      search () {
+      search() {
         this.init()
       },
-      jumpPage () {
+      handleCurrentChange(userInfo) {
+        this.$emit('chooseUser', userInfo.user_id)
+      },
+      jumpPage() {
         this.init()
       }
     }

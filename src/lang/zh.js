@@ -1,5 +1,9 @@
 export default {
   route: {
+    goods: '商品信息',
+    userInfo: '用户信息',
+    coupon: '优惠券',
+    couponActivityList: '优惠券活动',
     invite: '邀请统计',
     questionDetail: '问题详情',
     pSDetail: '研究生详情',

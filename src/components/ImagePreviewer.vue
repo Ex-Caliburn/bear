@@ -5,7 +5,7 @@
         <img
           :style="{'max-height': height + 'px'}"
           class="small-picture"
-          :src="domain + pictureSrc"
+          :src="pictureSrc"
           @click="preImg(pictureIndex)">
       </li>
     </ul>
@@ -25,7 +25,7 @@
             <i class="el-icon-close" @click="hidePreview"></i>
           </div>
         </div>
-        <img ref="img" :src="domain + prePictureList[currentIndex]">
+        <img ref="img" :src="prePictureList[currentIndex]">
         <div v-if="currentIndex > 0" class="left arrow" @click="updatePreview('-')"> <</div>
         <div v-if="currentIndex < prePictureList.length - 1" class="right arrow" @click="updatePreview('+')"> ></div>
       </div>
@@ -152,6 +152,7 @@
       display: flex;
       flex-wrap: wrap;
       & > li {
+        width: 100%;
         line-height: 0;
         margin-right: 5px;
         margin-bottom: 5px;
@@ -160,6 +161,7 @@
       }
     }
     .small-picture {
+      width: 100%;
       cursor: zoom-in;
     }
     .img-mask {
@@ -190,7 +192,7 @@
           left: 0;
           z-index: 1;
           .scale {
-            width: 50px;
+            width: 60px;
             text-align: center;
             font-size: 20px;
           }

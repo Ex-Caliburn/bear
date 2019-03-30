@@ -15,7 +15,7 @@
       </el-form-item>
 
       <el-form-item label="折扣金额">
-        <el-input-number v-model="form.coupon_money" :min="0.01"></el-input-number>
+        <el-input-number v-model="form.coupon_money" :min="1"></el-input-number>
       </el-form-item>
 
       <el-form-item label="数量">
@@ -53,7 +53,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="submit">立即创建</el-button>
+        <el-button type="primary" @click="submit">{{ id ? '确认修改' : '立即创建' }}</el-button>
       </el-form-item>
     </el-form>
 
@@ -112,6 +112,7 @@
         this.form.coupon_end_period = this.form.couponTime[1] + '+08:00'
         request.post('addCouponInfo', this.form)
           .then(res => {
+            this.routePush('coupon')
           }).catch(err => {
           console.log(err)
           this.$message.error(err)

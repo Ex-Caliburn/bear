@@ -24,7 +24,7 @@
   export default {
     name: 'avatarUpload-demo',
     components: { ImageCropper, PanThumb },
-    data () {
+    data() {
       return {
         imagecropperShow: false,
         imagecropperKey: 0,
@@ -32,12 +32,12 @@
       }
     },
     methods: {
-      cropSuccess (resData) {
+      cropSuccess(resData) {
         this.imagecropperShow = false
         this.imagecropperKey = this.imagecropperKey + 1
         this.image = resData.files.avatar
       },
-      close () {
+      close() {
         this.imagecropperShow = false
       }
     }

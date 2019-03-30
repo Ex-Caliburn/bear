@@ -16,7 +16,7 @@
   export default {
     name: 'jsonEditor-demo',
     components: { JsonEditor },
-    data () {
+    data() {
       return {
         value: JSON.parse(jsonData)
       }

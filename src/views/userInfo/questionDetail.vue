@@ -33,19 +33,18 @@
       ImagePreviewer
     },
     directives: {},
-    data () {
+    data() {
       return {
         questionId: Number(this.$route.query.questionId),
         questionType: Number(this.$route.query.questionType),
-        info: {
-        }
+        info: {}
       }
     },
-    mounted () {
+    mounted() {
       this.init()
     },
     methods: {
-      init () {
+      init() {
         request.get('getQuestionDetail', {
           questionId: this.questionId
         })
@@ -54,36 +53,39 @@
             res.questionPic = res.questionPic ? res.questionPic.split(',') : []
             this.info = res
           }).catch(err => {
-            console.log(err)
-          })
+          console.log(err)
+        })
       },
-      checkRewardQuestion () {
+      checkRewardQuestion() {
         request.get('checkRewardQuestion', {
           questionId: this.questionId,
           status: 0
         }).then(res => {
-            this.$message.success('审核成功')
-          }).catch(err => {
-            console.log(err)
-          })
+          this.$message.success('审核成功')
+        }).catch(err => {
+          console.log(err)
+        })
       }
     }
   }
 </script>
 
 <style scoped rel="stylesheet/scss" lang="scss">
-  .audit{
-    padding:20px;
-    div{
+  .audit {
+    padding: 20px;
+
+    div {
       margin: 20px 0;
-      .title{
+
+      .title {
         color: #3c4856;
         display: inline-block;
-        min-width:150px ;
+        min-width: 150px;
         margin-right: 50px;
         text-align: right;
       }
-      span:last-child{
+
+      span:last-child {
         color: #8b97a4;
       }
     }

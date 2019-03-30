@@ -33,13 +33,13 @@
       </el-table-column>
     </el-table>
     <!--<el-pagination-->
-      <!--@size-change="handleSizeChange"-->
-      <!--@current-change="handleCurrentChange"-->
-      <!--:current-page="page.pageNum"-->
-      <!--:page-sizes="page.pageSizes"-->
-      <!--:page-size="page.pageSize"-->
-      <!--layout="->, sizes, prev, pager, next, jumper"-->
-      <!--:total="totalCount">-->
+    <!--@size-change="handleSizeChange"-->
+    <!--@current-change="handleCurrentChange"-->
+    <!--:current-page="page.pageNum"-->
+    <!--:page-sizes="page.pageSizes"-->
+    <!--:page-size="page.pageSize"-->
+    <!--layout="->, sizes, prev, pager, next, jumper"-->
+    <!--:total="totalCount">-->
     <!--</el-pagination>-->
   </div>
 </template>
@@ -51,7 +51,7 @@
     filters: {},
     mixins: {},
     props: {},
-    data () {
+    data() {
       const item = {
         date: '上海市普陀区金沙江路上海市普陀区金沙江路上海市普陀区金沙江路',
         name: '王小虎',
@@ -67,12 +67,12 @@
 
     computed: {},
     watch: {},
-    mounted () {
+    mounted() {
 
     },
 
     methods: {
-      openPicker () {
+      openPicker() {
         this.$refs.picker.open()
       }
     }

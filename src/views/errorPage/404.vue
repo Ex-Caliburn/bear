@@ -26,14 +26,14 @@
 
   export default {
     name: 'page404',
-    data () {
+    data() {
       return {
         img_404,
         img_404_cloud
       }
     },
     computed: {
-      message () {
+      message() {
         return '特朗普说这个页面你不能进......'
       }
     }
@@ -47,17 +47,21 @@
     margin: 20px auto 60px;
     padding: 0 100px;
     overflow: hidden;
+
     .pic-404 {
       position: relative;
       float: left;
       width: 600px;
       padding: 150px 0;
       overflow: hidden;
+
       &__parent {
         width: 100%;
       }
+
       &__child {
         position: absolute;
+
         &.left {
           width: 80px;
           top: 17px;
@@ -69,6 +73,7 @@
           animation-fill-mode: forwards;
           animation-delay: 1s;
         }
+
         &.mid {
           width: 46px;
           top: 10px;
@@ -80,6 +85,7 @@
           animation-fill-mode: forwards;
           animation-delay: 1.2s;
         }
+
         &.right {
           width: 62px;
           top: 100px;
@@ -91,6 +97,7 @@
           animation-fill-mode: forwards;
           animation-delay: 1s;
         }
+
         @keyframes cloudLeft {
           0% {
             top: 17px;
@@ -159,12 +166,14 @@
         }
       }
     }
+
     .bullshit {
       position: relative;
       float: left;
       width: 300px;
       padding: 150px 0;
       overflow: hidden;
+
       &__oops {
         font-size: 32px;
         font-weight: bold;
@@ -176,6 +185,7 @@
         animation-duration: 0.5s;
         animation-fill-mode: forwards;
       }
+
       &__headline {
         font-size: 20px;
         line-height: 24px;
@@ -187,6 +197,7 @@
         animation-delay: 0.1s;
         animation-fill-mode: forwards;
       }
+
       &__info {
         font-size: 13px;
         line-height: 21px;
@@ -198,6 +209,7 @@
         animation-delay: 0.2s;
         animation-fill-mode: forwards;
       }
+
       &__return-home {
         display: block;
         float: left;
@@ -216,6 +228,7 @@
         animation-delay: 0.3s;
         animation-fill-mode: forwards;
       }
+
       @keyframes slideUp {
         0% {
           transform: translateY(60px);

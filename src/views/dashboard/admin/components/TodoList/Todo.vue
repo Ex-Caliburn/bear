@@ -22,13 +22,13 @@
   export default {
     name: 'Todo',
     props: ['todo'],
-    data () {
+    data() {
       return {
         editing: false
       }
     },
     directives: {
-      focus (el, { value }, { context }) {
+      focus(el, { value }, { context }) {
         if (value) {
           context.$nextTick(() => {
             el.focus()
@@ -37,16 +37,16 @@
       }
     },
     methods: {
-      deleteTodo (todo) {
+      deleteTodo(todo) {
         this.$emit('deleteTodo', todo)
       },
-      editTodo ({ todo, value }) {
+      editTodo({ todo, value }) {
         this.$emit('editTodo', { todo, value })
       },
-      toggleTodo (todo) {
+      toggleTodo(todo) {
         this.$emit('toggleTodo', todo)
       },
-      doneEdit (e) {
+      doneEdit(e) {
         const value = e.target.value.trim()
         const { todo } = this
         if (!value) {
@@ -61,7 +61,7 @@
           this.editing = false
         }
       },
-      cancelEdit (e) {
+      cancelEdit(e) {
         e.target.value = this.todo.text
         this.editing = false
       }

@@ -60,7 +60,7 @@
 
   export default {
     name: 'theme',
-    data () {
+    data() {
       return {
         theme: false,
         tags: [
@@ -75,7 +75,7 @@
       }
     },
     watch: {
-      theme () {
+      theme() {
         toggleClass(document.body, 'custom-theme')
       }
     }

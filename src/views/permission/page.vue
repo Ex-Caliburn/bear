@@ -11,7 +11,7 @@
     name: 'pagePermission',
     components: { SwitchRoles },
     methods: {
-      handleRolesChange () {
+      handleRolesChange() {
         this.$router.push({ path: '/permission/index?' + +new Date() })
       }
     }

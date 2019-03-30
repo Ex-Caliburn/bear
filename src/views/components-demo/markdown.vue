@@ -32,14 +32,14 @@
   export default {
     name: 'markdown-demo',
     components: { MarkdownEditor },
-    data () {
+    data() {
       return {
         content: content,
         html: ''
       }
     },
     methods: {
-      markdown2Html () {
+      markdown2Html() {
         import('showdown').then(showdown => {
           const converter = new showdown.Converter()
           this.html = converter.makeHtml(this.content)

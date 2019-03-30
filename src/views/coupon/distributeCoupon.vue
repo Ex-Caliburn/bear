@@ -2,9 +2,9 @@
   <div class="app-container">
     <div>
       <el-radio-group v-model="couponType" @change="init" class="MB20">
-        <el-radio-button  :label="1">折扣券</el-radio-button>
-        <el-radio-button  :label="2">免费体验券</el-radio-button>
-        <el-radio-button  :label="3">现金体验券</el-radio-button>
+        <el-radio-button :label="1">折扣券</el-radio-button>
+        <el-radio-button :label="2">免费体验券</el-radio-button>
+        <el-radio-button :label="3">现金体验券</el-radio-button>
       </el-radio-group>
     </div>
 
@@ -28,9 +28,9 @@
         prop="promotion_pwd">
       </el-table-column>
       <!--<el-table-column-->
-        <!--label="优惠券类型"-->
-        <!--width="100"-->
-        <!--prop="coupon_setting_type">-->
+      <!--label="优惠券类型"-->
+      <!--width="100"-->
+      <!--prop="coupon_setting_type">-->
       <!--</el-table-column>-->
       <el-table-column
         label="优惠金额"
@@ -42,7 +42,7 @@
         width="150"
         prop="invite_code">
         <template slot-scope="scope">
-          {{scope.row.coupon_start_period | dateFormat("yyyy-MM-dd hh:mm:ss")}}
+          {{scope.row.coupon_start_period | dateFormat('yyyy-MM-dd hh:mm:ss')}}
         </template>
       </el-table-column>
       <el-table-column
@@ -50,7 +50,7 @@
         width="150"
         prop="coupon_status">
         <template slot-scope="scope">
-          {{  scope.row.coupon_end_period | dateFormat("yyyy-MM-dd hh:mm:ss") }}
+          {{ scope.row.coupon_end_period | dateFormat('yyyy-MM-dd hh:mm:ss') }}
         </template>
       </el-table-column>
 
@@ -66,7 +66,7 @@
         width="150"
         prop="create_time">
         <template slot-scope="scope">
-          {{  scope.row.create_time | dateFormat("yyyy-MM-dd hh:mm:ss") }}
+          {{ scope.row.create_time | dateFormat('yyyy-MM-dd hh:mm:ss') }}
         </template>
       </el-table-column>
     </el-table>
@@ -102,22 +102,22 @@
     },
     mixins: [pagination],
     directives: {},
-    data () {
+    data() {
       return {
         tableData: [],
         couponType: 1,
         searchName: ''
       }
     },
-    mounted () {
+    mounted() {
       this.init()
     },
 
     methods: {
-      init () {
+      init() {
         request.get('getCouponList', {
           limit: this.page.pageSize,
-          offset: this.page.pageNum,
+          offset: this.page.offset,
           coupon_type: this.couponType,
         })
           .then(res => {
@@ -127,10 +127,10 @@
           console.log(err)
         })
       },
-      search () {
+      search() {
         this.init()
       },
-      jumpPage () {
+      jumpPage() {
         this.init()
       }
     }
@@ -138,7 +138,7 @@
 </script>
 
 <style scoped>
-  .avatar{
+  .avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;

@@ -16,17 +16,17 @@
   export default {
     name: 'dndList-demo',
     components: { DndList },
-    data () {
+    data() {
       return {
         list1: [],
         list2: []
       }
     },
-    created () {
+    created() {
       this.getData()
     },
     methods: {
-      getData () {
+      getData() {
         this.listLoading = true
         fetchList().then(response => {
           this.list1 = response.data.items.splice(0, 5)

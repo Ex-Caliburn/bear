@@ -50,7 +50,7 @@
       }
     },
     methods: {
-      hasOneShowingChildren (children) {
+      hasOneShowingChildren(children) {
         const showingChildren = children.filter(item => {
           return !item.hidden
         })

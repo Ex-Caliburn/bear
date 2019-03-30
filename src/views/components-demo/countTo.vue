@@ -44,7 +44,7 @@
   export default {
     name: 'countTo-demo',
     components: { countTo },
-    data () {
+    data() {
       return {
         setStartVal: 0,
         setEndVal: 2017,
@@ -56,28 +56,28 @@
       }
     },
     computed: {
-      _startVal () {
+      _startVal() {
         if (this.setStartVal) {
           return this.setStartVal
         } else {
           return 0
         }
       },
-      _endVal () {
+      _endVal() {
         if (this.setEndVal) {
           return this.setEndVal
         } else {
           return 0
         }
       },
-      _duration () {
+      _duration() {
         if (this.setDuration) {
           return this.setDuration
         } else {
           return 100
         }
       },
-      _decimals () {
+      _decimals() {
         if (this.setDecimals) {
           if (this.setDecimals < 0 || this.setDecimals > 20) {
             alert('digits argument must be between 0 and 20')
@@ -88,21 +88,21 @@
           return 0
         }
       },
-      _separator () {
+      _separator() {
         return this.setSeparator
       },
-      _suffix () {
+      _suffix() {
         return this.setSuffix
       },
-      _prefix () {
+      _prefix() {
         return this.setPrefix
       }
     },
     methods: {
-      start () {
+      start() {
         this.$refs.example.start()
       },
-      pauseResume () {
+      pauseResume() {
         this.$refs.example.pauseResume()
       }
     }
@@ -138,14 +138,14 @@
   }
 
   .example-btn:hover {
-    color: #4AB7BD;
+    color: #4ab7bd;
     background-color: #fff;
-    border-color: #4AB7BD;
+    border-color: #4ab7bd;
   }
 
   .example {
     font-size: 50px;
-    color: #F6416C;
+    color: #f6416c;
     display: block;
     margin: 10px 0;
     text-align: center;
@@ -181,26 +181,26 @@
   .startBtn {
     margin-left: 20px;
     font-size: 20px;
-    color: #30B08F;
+    color: #30b08f;
     background-color: #fff;
   }
 
   .startBtn:hover {
-    background-color: #30B08F;
+    background-color: #30b08f;
     color: #fff;
-    border-color: #30B08F;
+    border-color: #30b08f;
   }
 
   .pause-resume-btn {
     font-size: 20px;
-    color: #E65D6E;
+    color: #e65d6e;
     background-color: #fff;
   }
 
   .pause-resume-btn:hover {
-    background-color: #E65D6E;
+    background-color: #e65d6e;
     color: #fff;
-    border-color: #E65D6E;
+    border-color: #e65d6e;
   }
 </style>
 

@@ -100,7 +100,7 @@
   export default {
     name: 'sticky-demo',
     components: { Sticky },
-    data () {
+    data() {
       return {
         time: '',
         url: '',
@@ -111,7 +111,7 @@
           { key: 'c-platform', name: 'platformC' }
         ],
         pickerOptions: {
-          disabledDate (time) {
+          disabledDate(time) {
             return time.getTime() > Date.now()
           }
         }

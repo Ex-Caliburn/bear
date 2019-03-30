@@ -34,7 +34,7 @@
   export default {
     components: { PanThumb, Mallki },
 
-    data () {
+    data() {
       return {
         statisticsData: {
           article_count: 1024,
@@ -50,7 +50,7 @@
       ])
     },
     filters: {
-      statusFilter (status) {
+      statusFilter(status) {
         const statusMap = {
           success: 'success',
           pending: 'danger'
@@ -73,16 +73,19 @@
     .box-card-header {
       position: relative;
       height: 220px;
+
       img {
         width: 100%;
         height: 100%;
         transition: all 0.2s linear;
+
         &:hover {
           transform: scale(1.1, 1.1);
           filter: contrast(130%);
         }
       }
     }
+
     .mallki-text {
       position: absolute;
       top: 0px;
@@ -90,6 +93,7 @@
       font-size: 20px;
       font-weight: bold;
     }
+
     .panThumb {
       z-index: 100;
       height: 70px !important;
@@ -101,14 +105,17 @@
       background-color: #fff;
       margin: auto;
       box-shadow: none !important;
+
       /deep/ .pan-info {
         box-shadow: none !important;
       }
     }
+
     .progress-item {
       margin-bottom: 10px;
       font-size: 14px;
     }
+
     @media only screen and (max-width: 1510px) {
       .mallki-text {
         display: none;

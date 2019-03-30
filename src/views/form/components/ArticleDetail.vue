@@ -158,7 +158,7 @@
         default: false
       }
     },
-    data () {
+    data() {
       const validateRequire = (rule, value, callback) => {
         if (value === '') {
           this.$message({
@@ -204,11 +204,11 @@
       }
     },
     computed: {
-      contentShortLength () {
+      contentShortLength() {
         return this.postForm.content_short.length
       }
     },
-    created () {
+    created() {
       if (this.isEdit) {
         this.fetchData()
       } else {
@@ -216,7 +216,7 @@
       }
     },
     methods: {
-      fetchData () {
+      fetchData() {
         fetchArticle().then(response => {
           this.postForm = response.data
         }).catch(err => {
@@ -224,7 +224,7 @@
           console.log(err)
         })
       },
-      submitForm () {
+      submitForm() {
         this.postForm.display_time = parseInt(this.display_time / 1000)
         console.log(this.postForm)
         this.$refs.postForm.validate(valid => {
@@ -244,7 +244,7 @@
           }
         })
       },
-      draftForm () {
+      draftForm() {
         if (this.postForm.content.length === 0 || this.postForm.title.length === 0) {
           this.$message({
             message: '请填写必要的标题和内容',
@@ -260,7 +260,7 @@
         })
         this.postForm.status = 'draft'
       },
-      getRemoteUserList (query) {
+      getRemoteUserList(query) {
         userSearch(query).then(response => {
           if (!response.data.items) return
           console.log(response)
@@ -286,28 +286,35 @@
 
   .createPost-container {
     position: relative;
+
     .createPost-main-container {
       padding: 40px 45px 20px 50px;
+
       .postInfo-container {
         position: relative;
         @include clearfix;
         margin-bottom: 10px;
+
         .postInfo-container-item {
           float: left;
         }
       }
+
       .editor-container {
         min-height: 500px;
         margin: 0 0 30px;
+
         .editor-upload-btn-container {
           text-align: right;
           margin-right: 10px;
+
           .editor-upload-btn {
             display: inline-block;
           }
         }
       }
     }
+
     .word-counter {
       width: 40px;
       position: absolute;

@@ -22,13 +22,13 @@
   import { fetchList } from '@/api/transaction'
 
   export default {
-    data () {
+    data() {
       return {
         list: null
       }
     },
     filters: {
-      statusFilter (status) {
+      statusFilter(status) {
         const statusMap = {
           success: 'success',
           pending: 'danger'
@@ -36,11 +36,11 @@
         return statusMap[status]
       }
     },
-    created () {
+    created() {
       this.fetchData()
     },
     methods: {
-      fetchData () {
+      fetchData() {
         fetchList().then(response => {
           this.list = response.data.items.slice(0, 8)
         })

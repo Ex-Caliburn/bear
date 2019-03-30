@@ -25,12 +25,12 @@
         default: '300px'
       }
     },
-    data () {
+    data() {
       return {
         chart: null
       }
     },
-    mounted () {
+    mounted() {
       this.initChart()
       this.__resizeHanlder = debounce(() => {
         if (this.chart) {
@@ -39,7 +39,7 @@
       }, 100)
       window.addEventListener('resize', this.__resizeHanlder)
     },
-    beforeDestroy () {
+    beforeDestroy() {
       if (!this.chart) {
         return
       }
@@ -48,7 +48,7 @@
       this.chart = null
     },
     methods: {
-      initChart () {
+      initChart() {
         this.chart = echarts.init(this.$el, 'macarons')
 
         this.chart.setOption({

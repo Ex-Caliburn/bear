@@ -17,7 +17,7 @@
   export default {
     name: 'dragDialog-demo',
     directives: { elDragDialog },
-    data () {
+    data() {
       return {
         dialogTableVisible: false,
         gridData: [{

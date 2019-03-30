@@ -343,3 +343,37 @@ code {
     color: #fff;
   }
 }
+
+.el-dialog__header {
+  text-align: center;
+  border: none;
+}
+
+.dialog-footer {
+  padding: 20px;
+  text-align: center;
+}
+
+.el-dialog__footer{
+  padding: 0;
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+
+.img-in-table{
+  width: 100px;
+  height: 50px;
+}
+
+// 链接的颜色
+.jdk-color-link {
+  color: $jdk-main-color;
+}

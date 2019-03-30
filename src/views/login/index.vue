@@ -49,7 +49,7 @@
   export default {
     components: { LangSelect, SocialSign },
     name: 'login',
-    data () {
+    data() {
       // const validatePassword = (rule, value, callback) => {
       //   if (value.length < 6) {
       //     callback(new Error('The password can not be less than 6 digits'))
@@ -72,14 +72,14 @@
       }
     },
     methods: {
-      showPwd () {
+      showPwd() {
         if (this.passwordType === 'password') {
           this.passwordType = ''
         } else {
           this.passwordType = 'password'
         }
       },
-      handleLogin () {
+      handleLogin() {
         this.$refs.loginForm.validate(valid => {
           if (valid) {
             this.loading = true
@@ -93,15 +93,15 @@
                 this.$store.commit('login', res)
                 this.routePush('userInfo')
               }).catch(err => {
-                console.log(err)
-              })
+              console.log(err)
+            })
           } else {
             console.log('error submit!!')
             return false
           }
         })
       },
-      afterQRScan () {
+      afterQRScan() {
         // const hash = window.location.hash.slice(1)
         // const hashObj = getQueryObject(hash)
         // const originUrl = window.location.origin
@@ -120,10 +120,10 @@
         // }
       }
     },
-    created () {
+    created() {
       // window.addEventListener('hashchange', this.afterQRScan)
     },
-    destroyed () {
+    destroyed() {
       // window.removeEventListener('hashchange', this.afterQRScan)
     }
   }
@@ -139,6 +139,7 @@
       display: inline-block;
       height: 47px;
       width: 85%;
+
       input {
         background: transparent;
         border: 0px;
@@ -147,12 +148,14 @@
         padding: 12px 5px 12px 15px;
         color: $light_gray;
         height: 47px;
+
         &:-webkit-autofill {
           -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
           -webkit-text-fill-color: #fff !important;
         }
       }
     }
+
     .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);
@@ -171,8 +174,9 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background:url('~@/assets/tree.jpg') no-repeat top left;
+    background: url('~@/assets/tree.jpg') no-repeat top left;
     background-size: 100% 100%;
+
     .login-form {
       position: absolute;
       left: 0;
@@ -181,28 +185,34 @@
       padding: 35px 35px 15px 35px;
       margin: 120px auto;
     }
+
     .tips {
       font-size: 14px;
       color: #fff;
       margin-bottom: 10px;
+
       span {
         &:first-of-type {
           margin-right: 16px;
         }
       }
     }
+
     .svg-container {
       padding: 6px 5px 6px 15px;
       color: $dark_gray;
       vertical-align: middle;
       width: 30px;
       display: inline-block;
+
       &_login {
         font-size: 20px;
       }
     }
+
     .title-container {
       position: relative;
+
       .title {
         font-size: 26px;
         font-weight: 400;
@@ -211,6 +221,7 @@
         text-align: center;
         font-weight: bold;
       }
+
       .set-language {
         color: #fff;
         position: absolute;
@@ -218,6 +229,7 @@
         right: 0px;
       }
     }
+
     .show-pwd {
       position: absolute;
       right: 10px;
@@ -227,6 +239,7 @@
       cursor: pointer;
       user-select: none;
     }
+
     .thirdparty-button {
       position: absolute;
       right: 35px;

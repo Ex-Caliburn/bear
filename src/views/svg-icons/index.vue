@@ -26,22 +26,22 @@
 
   export default {
     name: 'icons',
-    data () {
+    data() {
       return {
         iconsMap: []
       }
     },
-    mounted () {
+    mounted() {
       const iconsMap = icons.state.iconsMap.map((i) => {
         return i.default.id.split('-')[1]
       })
       this.iconsMap = iconsMap
     },
     methods: {
-      generateIconCode (symbol) {
-        return `<svg-icon icon-class="${symbol}" />`
+      generateIconCode(symbol) {
+        return `<svg-icon icon-class="${ symbol }" />`
       },
-      handleClipboard (text, event) {
+      handleClipboard(text, event) {
         clipboard(text, event)
       }
     }
@@ -52,9 +52,11 @@
   .icons-container {
     margin: 10px 20px 0;
     overflow: hidden;
+
     .icons-wrapper {
       margin: 0 auto;
     }
+
     .icon-item {
       margin: 20px;
       height: 110px;
@@ -65,11 +67,13 @@
       color: #24292e;
       cursor: pointer;
     }
+
     span {
       display: block;
       font-size: 24px;
       margin-top: 10px;
     }
+
     .disabled {
       pointer-events: none;
     }

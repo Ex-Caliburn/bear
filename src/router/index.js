@@ -44,18 +44,6 @@ export const constantRouterMap = [
     }]
   },
   {
-    hidden: true,
-    path: '/documentation',
-    component: Layout,
-    redirect: '/documentation/index',
-    children: [{
-      path: 'index',
-      component: _import('documentation/index'),
-      name: 'documentation',
-      meta: { title: 'documentation', icon: 'documentation', noCache: true }
-    }]
-  },
-  {
     path: '/goods',
     component: Layout,
     redirect: '/goods/index',
@@ -124,7 +112,6 @@ export const constantRouterMap = [
       name: 'distributeCoupon',
       meta: { title: 'distributeCoupon', icon: 'form', noCache: true }
     },{
-      hidden: true,
       path: 'couponActivityList',
       component: _import('coupon/couponActivityList'),
       name: 'couponActivityList',
@@ -138,35 +125,26 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/feedback',
+    path: '/invite',
     component: Layout,
-    redirect: '/feedback/index',
+    redirect: '/invite/index',
     meta: {
-      title: 'feedback',
+      title: 'invite',
       icon: 'message'
     },
     children: [{
-      path: 'feedback',
-      component: _import('feedback/index'),
-      name: 'feedback',
-      meta: { title: 'feedback', icon: 'message', noCache: true }
+      path: 'invite',
+      component: _import('invite/index'),
+      name: 'invite',
+      meta: { title: 'invite', icon: 'message', noCache: true }
     },{
+      hidden: true,
       path: 'complaint',
-      component: _import('feedback/complaint'),
+      component: _import('invite/complaint'),
       name: 'complaint',
       meta: { title: 'complaint', icon: 'message', noCache: true }
     }]
   }
-  // {
-  //   path: '/icon',
-  //   component: Layout,
-  //   children: [{
-  //     path: 'index',
-  //     component: _import('svg-icons/index'),
-  //     name: 'icons',
-  //     meta: { title: 'icons', icon: 'icon', noCache: true }
-  //   }]
-  // }
 ]
 
 export default new Router({

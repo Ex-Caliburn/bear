@@ -8,18 +8,18 @@
       </el-form-item>
 
       <el-form-item label="类型">
-        <el-radio-group v-model="form.goods_type	">
+        <el-radio-group v-model="form.goods_type" :disabled="Boolean(id)">
           <el-radio :label="1">鞋子</el-radio>
           <el-radio :label="2">包</el-radio>
         </el-radio-group>
       </el-form-item>
 
       <el-form-item label="价格">
-        <el-input-number v-model="form.goods_price" :min="0.01"></el-input-number>
+        <el-input-number v-model="form.goods_price" :min="1"></el-input-number>
       </el-form-item>
 
       <el-form-item label="原价">
-        <el-input-number v-model="form.goods_original_price	" :min="0.01"></el-input-number>
+        <el-input-number v-model="form.goods_original_price" :min="1"></el-input-number>
       </el-form-item>
 
       <el-form-item label="商品图片">
@@ -29,15 +29,14 @@
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
-          <img v-if="form.goods_original_price" :src="form.goods_original_price" class="uploader-img">
+          <img v-if="form.goods_image" :src="form.goods_image" class="uploader-img">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
 
 
-
       <el-form-item>
-        <el-button type="primary" @click="submit">立即创建</el-button>
+        <el-button type="primary" @click="submit">{{ id ? '确认修改' : '立即创建' }}</el-button>
       </el-form-item>
     </el-form>
 
@@ -70,46 +69,64 @@
         form: {
           goods_type: 1,
           goods_name: '',
-          goods_price	: 1,
-          goods_original_price	: '',
-          goods_image	: '',
+          goods_price: 0,
+          goods_original_price: 0,
+          goods_image: 'http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg',
         }
       }
     },
     mounted() {
       if (this.$route.params.id) {
-        this.init()
+        // todo
+        // this.init()
       }
     },
 
     methods: {
       init() {
-      },
-      submit() {
-        // if (!this.form.couponTime.length) {
-        //   this.$message.error('请选择日期')
-        // }
-        request.post('addGoodsInfo', this.form)
+        request.post('getGoodsInfo', this.id)
           .then(res => {
+            this.form = res
           }).catch(err => {
           console.log(err)
           this.$message.error(err)
         })
       },
+      submit() {
+        if (this.id) {
+          request.post('updateGoodsInfo', { ...this.form, goods_id: this.id })
+            .then(res => {
+              this.$message.success('更新成功')
+              this.routePush('goods')
+            }).catch(err => {
+            console.log(err)
+            this.$message.error(err)
+          })
+        } else {
+          request.post('addGoodsInfo', this.form)
+            .then(res => {
+              this.$message.success('新建成功')
+              this.routePush('goods')
+            }).catch(err => {
+            console.log(err)
+            this.$message.error(err)
+          })
+        }
+      },
       handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
+        this.imageUrl = URL.createObjectURL(file.raw)
       },
       beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
+        const isJPG = file.type === 'image/jpeg'
+        const isLt2M = file.size / 1024 / 1024 < 2
 
         if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
+          this.$message.error('上传头像图片只能是 JPG 格式!')
         }
         if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
+          this.$message.error('上传头像图片大小不能超过 2MB!')
         }
-        return isJPG && isLt2M;
+        return isJPG && isLt2M
       }
     }
   }
@@ -125,6 +142,7 @@
     height: 40px;
     border-radius: 50%;
   }
+
   .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
@@ -133,22 +151,10 @@
     line-height: 178px;
     text-align: center;
   }
+
   .uploader-img {
     width: 178px;
     height: 178px;
     display: block;
-  }
-</style>
-
-<style lang="scss" scoped>
-  .avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
   }
 </style>
