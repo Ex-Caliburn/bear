@@ -114,7 +114,7 @@
         }
       },
       handleAvatarSuccess(res, file) {
-        this.imageUrl = ENV_URL.prefixImage + res.data.image_url
+        this.form.goods_image = ENV_URL.prefixImage + res.data.image_url
       },
       beforeAvatarUpload(file) {
         const isLt2M = file.size / 1024 / 1024 < 2
