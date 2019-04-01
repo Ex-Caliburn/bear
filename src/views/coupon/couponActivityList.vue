@@ -168,7 +168,7 @@
         })
           .then(res => {
             this.totalCount = res.count
-            this.tableData = res.coupon_list
+            this.tableData = res.list
           }).catch(err => {
           console.log(err)
         })

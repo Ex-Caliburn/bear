@@ -25,7 +25,7 @@
       <el-form-item label="商品图片">
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          :action="uploadImage"
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
@@ -49,7 +49,7 @@
 
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
-
+  import {ENV_URL} from '@/utils/const'
   import { dateFormat } from '@/utils/'
 
   export default {
@@ -65,26 +65,26 @@
     data() {
       return {
         id: parseInt(this.$route.params.id, 10) || 0,
+        uploadImage: window.location.origin +  ENV_URL.uploadImage,
         searchName: '',
         form: {
           goods_type: 1,
           goods_name: '',
           goods_price: 0,
           goods_original_price: 0,
-          goods_image: 'http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg',
+          goods_image: '',
         }
       }
     },
     mounted() {
       if (this.$route.params.id) {
-        // todo
-        // this.init()
+        this.init()
       }
     },
 
     methods: {
       init() {
-        request.post('getGoodsInfo', this.id)
+        request.get('getGoodsInfoByGoodsId',{goods_id: this.id})
           .then(res => {
             this.form = res
           }).catch(err => {
@@ -114,19 +114,15 @@
         }
       },
       handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw)
+        this.imageUrl = ENV_URL.prefixImage + res.data.image_url
       },
       beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg'
         const isLt2M = file.size / 1024 / 1024 < 2
 
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!')
-        }
         if (!isLt2M) {
           this.$message.error('上传头像图片大小不能超过 2MB!')
         }
-        return isJPG && isLt2M
+        return isLt2M
       }
     }
   }
