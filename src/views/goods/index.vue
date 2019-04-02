@@ -17,6 +17,15 @@
         prop="goods_name">
       </el-table-column>
       <el-table-column
+        label="类型"
+        width="100"
+        prop="goods_type">
+        <template slot-scope="scope">
+          {{scope.row.goods_type === 1 ? '鞋子' : '包'}}
+        </template>
+
+      </el-table-column>
+      <el-table-column
         label="价格"
         width="100"
         prop="goods_price">
@@ -27,11 +36,11 @@
         prop="goods_original_price">
       </el-table-column>
       <el-table-column
-        label="类型"
+        label="清洁类型"
         width="100"
         prop="goods_type">
         <template slot-scope="scope">
-          {{scope.row.goods_type === 1 ? '鞋子' : '包'}}
+          {{scope.row.is_basic_service === 1 ? '基础清洁' : '非基础清洁'}}
         </template>
 
       </el-table-column>
@@ -76,15 +85,16 @@
       </el-table-column>
     </el-table>
 
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="page.pageNum"
-      :page-sizes="page.pageSizes"
-      :page-size="page.pageSize"
-      layout="->, sizes, prev, pager, next, jumper"
-      :total="totalCount">
-    </el-pagination>
+    <!-- 暂时不需要 -->
+    <!--<el-pagination-->
+      <!--@size-change="handleSizeChange"-->
+      <!--@current-change="handleCurrentChange"-->
+      <!--:current-page="page.pageNum"-->
+      <!--:page-sizes="page.pageSizes"-->
+      <!--:page-size="page.pageSize"-->
+      <!--layout="->, sizes, prev, pager, next, jumper"-->
+      <!--:total="totalCount">-->
+    <!--</el-pagination>-->
   </div>
 
 </template>

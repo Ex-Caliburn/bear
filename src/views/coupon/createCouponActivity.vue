@@ -115,7 +115,7 @@
       }
     },
     mounted() {
-      if (this.$route.params.id) {
+      if (this.id) {
         this.init()
       }
     },

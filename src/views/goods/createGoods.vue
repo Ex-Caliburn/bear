@@ -14,6 +14,13 @@
         </el-radio-group>
       </el-form-item>
 
+      <el-form-item label="清洁类型">
+        <el-radio-group v-model="form.is_basic_service" :disabled="Boolean(id)">
+          <el-radio :label="0">非基础清洁</el-radio>
+          <el-radio :label="1">基础清洁</el-radio>
+        </el-radio-group>
+      </el-form-item>
+
       <el-form-item label="价格">
         <el-input-number v-model="form.goods_price" :min="1"></el-input-number>
       </el-form-item>
@@ -73,11 +80,12 @@
           goods_price: 0,
           goods_original_price: 0,
           goods_image: '',
+          is_basic_service: '',
         }
       }
     },
     mounted() {
-      if (this.$route.params.id) {
+      if (this.id) {
         this.init()
       }
     },
