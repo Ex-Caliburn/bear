@@ -122,7 +122,7 @@
 
     methods: {
       init() {
-        request.get('getCouponInfoByCouponId', {coupon_id: this.id})
+        request.post('getCouponActivityInfoById', {coupon_id: this.id})
           .then(res => {
             this.form = Object.assign(this.form, res)
           }).catch(err => {
