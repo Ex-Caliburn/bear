@@ -7,7 +7,7 @@
         <el-radio-button :label="3">现金体验券</el-radio-button>
       </el-radio-group>
 
-      <router-link class="jdk-fake-btn" :to="{name: 'createCoupon',params: {id: 0}}">新建券</router-link>
+      <router-link class="fake-btn" :to="{name: 'createCoupon',params: {id: 0}}">新建券</router-link>
     </div>
 
     <el-table
@@ -87,7 +87,7 @@
             </div>
             <div class="flex0">
               <el-button type="text">
-                <router-link class="jdk-color-link" :to="{name: 'createCouponActivity', params: {id: scope.row.id}}">
+                <router-link class="color-link" :to="{name: 'createCouponActivity', params: {id: scope.row.id}}">
                   添加优惠券活动
                 </router-link>
               </el-button>

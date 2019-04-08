@@ -3,7 +3,7 @@
 
     <el-form ref="form" :model="form" label-width="120px" class="form">
       <el-form-item label="类型">
-        <el-radio-group v-model="form.coupon_type">
+        <el-radio-group v-model="form.coupon_type" :disabled="Boolean(id)">
           <el-radio :label="1">折扣券</el-radio>
           <el-radio :label="2">免费体验券</el-radio>
           <el-radio :label="3">现金体验券</el-radio>
@@ -122,9 +122,11 @@
 
     methods: {
       init() {
-        request.post('getCouponActivityInfoById', {coupon_id: this.id})
+        request.get('getCouponActivityInfoById', {activity_id: this.id})
           .then(res => {
             this.form = Object.assign(this.form, res)
+            this.form.couponTime = [res.coupon_start_period, res.coupon_end_period]
+            this.form.activityTime = [res.activity_start_time, res.activity_end_time]
           }).catch(err => {
           console.log(err)
           this.$message.error(err)

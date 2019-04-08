@@ -77,7 +77,7 @@
           <div class="flex flex-between flex-align-center">
             <el-button type="text" @click="deleteGood(scope.row.goods_id)">删除
             </el-button>
-            <router-link class="jdk-color-link" :to="{name: 'createGoods',params: {id: scope.row.goods_id}}">更新
+            <router-link class="color-link" :to="{name: 'createGoods',params: {id: scope.row.goods_id}}">更新
             </router-link>
           </div>
 

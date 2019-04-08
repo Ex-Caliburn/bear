@@ -5,7 +5,7 @@
 @import './sidebar.scss';
 @import './btn.scss';
 
-$jdk-main-color: #5599ff;
+$main-color: #5599ff;
 
 body {
   height: 100%;
@@ -327,19 +327,19 @@ code {
 
 
 // a标签用，伪装成ele按钮
-.jdk-fake-btn {
+.fake-btn {
   display: inline-block;
   text-align: center;
   padding: 0 20px;
   line-height: 34px;
   border: 1px solid #b3d8ff;
   border-radius: 4px;
-  color: $jdk-main-color;
+  color: $main-color;
   cursor: pointer;
   box-sizing: border-box;
   &:hover {
-    background: $jdk-main-color;
-    border-color: $jdk-main-color;
+    background: $main-color;
+    border-color: $main-color;
     color: #fff;
   }
 }
@@ -374,6 +374,6 @@ code {
 }
 
 // 链接的颜色
-.jdk-color-link {
-  color: $jdk-main-color;
+.color-link {
+  color: $main-color;
 }

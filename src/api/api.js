@@ -23,7 +23,7 @@ class Api {
   delGoodsInfo = 'Goods/DelGoodsInfo' // 删除商品信息
   updateGoodsInfo = 'Goods/UpdateGoodsInfo' // 更新商品信息
   getGoodsInfoByGoodsId = 'Goods/GetGoodsInfoByGoodsId' // 更新商品信息
-  getCouponActivityInfoById = 'Coupon/getCouponActivityInfoById' // 更新商品信息
+  getCouponActivityInfoById = 'Coupon/GetCouponActivityInfoById' // 更新商品信息
   /* 邀请 */
   getUserInviteRecord = 'UserC/GetUserInviteRecord' // 查看发起邀请用户数据
   getUserInviteUserInfo = 'UserC/GetUserInviteUserInfo' // 查看用户邀请的所有记录

@@ -15,16 +15,16 @@
         width="150"
         prop="coupon_name">
       </el-table-column>
-      <el-table-column
-        label="优惠码"
-        width="100"
-        prop="promotion_code">
-      </el-table-column>
-      <el-table-column
-        label="优惠券密码"
-        width="100"
-        prop="promotion_pwd">
-      </el-table-column>
+      <!--<el-table-column-->
+        <!--label="优惠码"-->
+        <!--width="100"-->
+        <!--prop="promotion_code">-->
+      <!--</el-table-column>-->
+      <!--<el-table-column-->
+        <!--label="优惠券密码"-->
+        <!--width="100"-->
+        <!--prop="promotion_pwd">-->
+      <!--</el-table-column>-->
       <el-table-column
         label="优惠券类型"
         width="100"
@@ -44,7 +44,7 @@
         width="100"
         prop="activity_image">
         <template slot-scope="scope">
-          <image-previewer class="img-in-table" :prePictureList="[scope.row.goods_image || '']"></image-previewer>
+          <image-previewer class="img-in-table" :prePictureList="[scope.row.activity_image || '']"></image-previewer>
         </template>
       </el-table-column>
 
@@ -95,7 +95,15 @@
         width="150"
         prop="create_time">
         <template slot-scope="scope">
-          {{ scope.row.create_time | dateFormat('yyyy-MM-dd hh:mm:ss') }}
+          {{ scope.row.created_at | dateFormat('yyyy-MM-dd hh:mm:ss') }}
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="更新时间"
+        width="150"
+        prop="create_time">
+        <template slot-scope="scope">
+          {{ scope.row.update_at | dateFormat('yyyy-MM-dd hh:mm:ss') }}
         </template>
       </el-table-column>
       <el-table-column
@@ -109,9 +117,7 @@
         width="100"
         prop="create_time">
         <template slot-scope="scope">
-          <el-button type="primary">
-            <router-link :to="{name: 'createCouponActivity', params: {id:scope.row.id}}">修改</router-link>
-          </el-button>
+          <router-link class="color-link" :to="{name: 'createCouponActivity', params: {id:scope.row.id}}">修改</router-link>
         </template>
       </el-table-column>
     </el-table>
