@@ -1,5 +1,6 @@
 // set function parseTime,formatTime to filter
 export { parseTime, formatTime } from '@/utils'
+import {ENV_URL} from '@/utils/const'
 
 function pluralize (time, label) {
   if (time === 1) {
@@ -39,4 +40,26 @@ export function numberFormatter (num, digits) {
 
 export function toThousandslsFilter (num) {
   return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+}
+
+export function getMediaPath(url, type) {
+  if (/^data:/g.test(url) || !url || url.indexOf('/img/') > -1) {
+    return url || ''
+  }
+
+  let path = ''
+  if (url.indexOf('http') === -1) {
+    switch (type) {
+      case 'picture':
+        path = ENV_URL.prefixImage
+        // 避免双斜杠
+        if (url[0] === '/') {
+          url = url.substr(1)
+        }
+        break
+      default:
+        break
+    }
+  }
+  return path + url
 }

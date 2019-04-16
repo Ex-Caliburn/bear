@@ -5,7 +5,7 @@
         <img
           :style="{'max-height': height + 'px'}"
           class="small-picture"
-          :src="pictureSrc"
+          :src="pictureSrc | getMediaPath('picture')"
           @click="preImg(pictureIndex)">
       </li>
     </ul>
@@ -25,7 +25,7 @@
             <i class="el-icon-close" @click="hidePreview"></i>
           </div>
         </div>
-        <img ref="img" :src="prePictureList[currentIndex]">
+        <img ref="img" :src="prePictureList[currentIndex]  | getMediaPath('picture')">
         <div v-if="currentIndex > 0" class="left arrow" @click="updatePreview('-')"> <</div>
         <div v-if="currentIndex < prePictureList.length - 1" class="right arrow" @click="updatePreview('+')"> ></div>
       </div>

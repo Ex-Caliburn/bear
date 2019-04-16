@@ -25,7 +25,7 @@
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
-          <img v-if="form.activity_image" :src="form.activity_image" class="uploader-img">
+          <img v-if="form.activity_image" :src="form.activity_image | getMediaPath('picture')" class="uploader-img">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -108,7 +108,6 @@
           activity_end_time: '',
           activity_start_time: '',
           activity_image: '',
-          // activity_image: 'http://www.pptbz.com/pptpic/UploadFiles_6909/201203/2012031220134655.jpg',
           couponTime: [],
           activityTime: [],
         }
@@ -164,7 +163,7 @@
         }
       },
       handleAvatarSuccess(res, file) {
-        this.form.activity_image = ENV_URL.prefixImage + res.data.image_url
+        this.form.activity_image = res.data.image_url
       },
       beforeAvatarUpload(file) {
         const isLt2M = file.size / 1024 / 1024 < 2

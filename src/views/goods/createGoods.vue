@@ -36,7 +36,7 @@
           :show-file-list="false"
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload">
-          <img v-if="form.goods_image" :src="form.goods_image" class="uploader-img">
+          <img v-if="form.goods_image" :src="form.goods_image | getMediaPath('picture')" class="uploader-img">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
@@ -122,7 +122,7 @@
         }
       },
       handleAvatarSuccess(res, file) {
-        this.form.goods_image = ENV_URL.prefixImage + res.data.image_url
+        this.form.goods_image = res.data.image_url
       },
       beforeAvatarUpload(file) {
         const isLt2M = file.size / 1024 / 1024 < 2
