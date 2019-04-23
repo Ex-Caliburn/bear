@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <div class="flex flex-hend MB20">
+    <div class="flex flex-between MB20">
+      <el-button type="primary" @click="exportUserInfo">导出</el-button>
+
       <el-input
         placeholder="微信昵称"
         @keyup.enter.native="search()"
@@ -47,6 +49,32 @@
         prop="real_name"
         label="真名">
       </el-table-column>
+      <el-table-column
+        width="80"
+        prop="gender"
+        label="性别">
+        <template slot-scope="scope">
+          {{scope.row.gender === 1 ? '男' : '女'}}
+        </template>
+      </el-table-column>
+
+
+      <el-table-column
+        width="80"
+        prop="consume_num"
+        label="消费次数">
+      </el-table-column>
+      <el-table-column
+        width="80"
+        prop="consume_money"
+        label="消费金额">
+      </el-table-column>
+      <el-table-column
+        width="80"
+        prop="user_money"
+        label="余额">
+      </el-table-column>
+
 
       <el-table-column
         width="80"
@@ -102,6 +130,7 @@
 <script>
   import request from '@/api/request'
   import { dateFormat } from '@/utils/'
+  import {ENV_URL} from '@/utils/const'
 
   import ImagePreviewer from '@/components/ImagePreviewer'
   import pagination from '@/mixins/pagination'
@@ -133,6 +162,9 @@
     },
 
     methods: {
+      exportUserInfo () {
+        window.location.href = ENV_URL.exportUserInfo
+      },
       init() {
         request.get('userInfoList', {
           limit: this.page.pageSize,
