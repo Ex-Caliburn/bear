@@ -39,9 +39,6 @@
         width="150"
         prop="birthday"
         label="生日">
-        <template slot-scope="scope">
-          {{scope.row.answer && scope.row.answer.slice(0, 40) || ''}}
-        </template>
       </el-table-column>
 
       <el-table-column
@@ -68,11 +65,17 @@
         width="80"
         prop="consume_money"
         label="消费金额">
+        <template slot-scope="scope">
+          {{divide(scope.row.consume_money, 100)}}
+        </template>
       </el-table-column>
       <el-table-column
         width="80"
         prop="user_money"
         label="余额">
+        <template slot-scope="scope">
+          {{divide(scope.row.user_money, 100)}}
+        </template>
       </el-table-column>
 
 
@@ -134,6 +137,7 @@
 
   import ImagePreviewer from '@/components/ImagePreviewer'
   import pagination from '@/mixins/pagination'
+  import precision from 'number-precision'
 
   export default {
     name: 'userInfo',
@@ -162,6 +166,7 @@
     },
 
     methods: {
+      divide: precision.divide,
       exportUserInfo () {
         window.location.href = ENV_URL.exportUserInfo
       },
