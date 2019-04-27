@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="flex flex-between MB20">
-      <el-button type="primary" @click="exportUserInfo">导出</el-button>
+      <el-button v-show="!isDialog" type="primary" @click="exportUserInfo">导出</el-button>
 
       <el-input
         placeholder="微信昵称"
