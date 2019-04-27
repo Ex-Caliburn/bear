@@ -189,9 +189,6 @@
       search() {
         this.init()
       },
-      handleCurrentChange(userInfo) {
-        this.$emit('chooseUser', userInfo.user_id)
-      },
       jumpPage() {
         this.init()
       }
