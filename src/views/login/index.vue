@@ -59,8 +59,8 @@
       // }
       return {
         loginForm: {
-          email: 'admin@qq.com',
-          password: '123456'
+          email: '',
+          password: ''
         },
         loginRules: {
           email: [{ required: true, trigger: 'blur' }],
