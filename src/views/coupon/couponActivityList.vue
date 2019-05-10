@@ -53,7 +53,7 @@
         width="100"
         prop="coupon_status">
         <template slot-scope="scope">
-          {{ scope.row.coupon_status ? '正常' : '冻结' }}
+          {{ scope.row.coupon_status ? '冻结' : '正常'  }}
         </template>
       </el-table-column>
 
