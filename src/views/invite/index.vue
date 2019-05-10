@@ -13,6 +13,10 @@
         label="邀请人数"
         prop="invite_num">
       </el-table-column>
+      <el-table-column
+        label="积分"
+        prop="integral_num">
+      </el-table-column>
 
       <el-table-column
         label="操作"
@@ -20,7 +24,7 @@
         prop="create_time">
         <template slot-scope="scope">
           <div class="flex flex-between flex-align-center">
-            <el-button type="text" @click="getInviteHistory(scope.row.user_id)">查看邀请记录
+            <el-button type="text" @click="getInviteHistory(scope.row.invite_user_id)">查看邀请记录
             </el-button>
           </div>
         </template>
@@ -50,16 +54,12 @@
         :data="inviteHistoryList"
         style="width: 100%">
         <el-table-column
-          show-overflow-tooltip
-          label="邀请人"
+          label="被邀请人"
           prop="user_name">
         </el-table-column>
         <el-table-column
-          label="邀请人数"
-          prop="invite_num">
-        </el-table-column>
-        <el-table-column
-          label="被邀请人"
+          show-overflow-tooltip
+          label="邀请人"
           prop="invite_user_name">
         </el-table-column>
         <el-table-column
