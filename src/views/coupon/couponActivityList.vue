@@ -81,14 +81,14 @@
           {{scope.row.coupon_start_period | dateFormat('yyyy-MM-dd hh:mm:ss')}}
         </template>
       </el-table-column>
-      <el-table-columnl
+      <el-table-column
         label="优惠券结束时间"
         width="150"
         prop="coupon_status">
         <template slot-scope="scope">
           {{ scope.row.coupon_end_period | dateFormat('yyyy-MM-dd hh:mm:ss') }}
         </template>
-      </el-table-columnl>
+      </el-table-column>
 
       <el-table-column
         label="创建时间"
