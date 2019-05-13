@@ -16,7 +16,7 @@
     <el-table
       :data="tableData"
       :highlight-current-row="isDialog"
-      @current-change="handleCurrentChange"
+      @current-change="chooseUser"
       style="width: 100%">
       <el-table-column
         label="微信昵称"
@@ -191,7 +191,11 @@
       },
       jumpPage() {
         this.init()
-      }
+      },
+      chooseUser(userInfo) {
+        console.log(userInfo)
+        this.$emit('chooseUser', userInfo.user_id)
+      },
     }
   }
 </script>
