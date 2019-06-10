@@ -93,6 +93,7 @@
                 this.$store.commit('login', res)
                 this.routePush('userInfo')
               }).catch(err => {
+              this.loading = false
               console.log(err)
             })
           } else {

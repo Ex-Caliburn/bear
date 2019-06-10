@@ -24,6 +24,8 @@ class Api {
   updateGoodsInfo = 'Goods/UpdateGoodsInfo' // 更新商品信息
   getGoodsInfoByGoodsId = 'Goods/GetGoodsInfoByGoodsId' // 更新商品信息
   getCouponActivityInfoById = 'Coupon/GetCouponActivityInfoById' // 更新商品信息
+  getMiniAppQRCode = 'Image/GetMiniAppQRCode' // 获取优惠券活动的小程序码
+  getUserExtractCouponList = 'user/userExtractCoupon' // 获取优惠券活动的小程序码
   /* 邀请 */
   getUserInviteRecord = 'UserC/GetUserInviteRecord' // 查看发起邀请用户数据
   getUserInviteUserInfo = 'UserC/GetUserInviteUserInfo' // 查看用户邀请的所有记录
