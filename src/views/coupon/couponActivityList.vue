@@ -114,10 +114,17 @@
       </el-table-column>
       <el-table-column
         label="操作"
-        width="100"
+        width="200"
+        fixed="right"
         prop="create_time">
         <template slot-scope="scope">
           <router-link class="color-link" :to="{name: 'createCouponActivity', params: {id:scope.row.id}}">修改</router-link>
+          <el-popover v-if="scope.row.activity_type=2" placement="bottom" trigger="hover">
+            <img style="width: 200px" :src="qRCodePrefix + scope.row.id " alt="" />
+            <el-button type="text" slot="reference">二维码</el-button>
+          </el-popover>
+
+          <a :href="ExportActivityInfo + + scope.row.id" target="_blank" class="color-link">导出活动详情</a>
         </template>
       </el-table-column>
     </el-table>
@@ -159,6 +166,8 @@
         couponTypeArr: ['折扣券', '免费体验券', ':现金体验券'],
         tableData: [],
         couponType: 1,
+        qRCodePrefix: window.location.origin + '/api/Image/GetMiniAppQRCode?scene=b',
+        ExportActivityInfo: window.location.origin + '/api/CouponActivity/ExportActivityInfo?activity_id=',
         searchName: ''
       }
     },
