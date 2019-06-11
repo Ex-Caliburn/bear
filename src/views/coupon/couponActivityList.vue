@@ -30,7 +30,7 @@
         width="100"
         prop="coupon_type">
         <template slot-scope="scope">
-          {{ couponTypeArr[scope.row.coupon_type] }}
+          {{ couponTypeArr[scope.row.coupon_type-1] }}
         </template>
       </el-table-column>
       <el-table-column
@@ -54,6 +54,15 @@
         prop="coupon_status">
         <template slot-scope="scope">
           {{ scope.row.coupon_status ? '冻结' : '正常'  }}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="上架中"
+        width="100"
+        prop="coupon_status">
+        <template slot-scope="scope">
+          {{ scope.row.activity_type === 2 ? '是' : '否'  }}
         </template>
       </el-table-column>
 
@@ -119,12 +128,14 @@
         prop="create_time">
         <template slot-scope="scope">
           <router-link class="color-link" :to="{name: 'createCouponActivity', params: {id:scope.row.id}}">修改</router-link>
-          <el-popover v-if="scope.row.activity_type=2" placement="bottom" trigger="hover">
-            <img style="width: 200px" :src="qRCodePrefix + scope.row.id " alt="" />
-            <el-button type="text" slot="reference">二维码</el-button>
-          </el-popover>
 
-          <a :href="ExportActivityInfo + + scope.row.id" target="_blank" class="color-link">导出活动详情</a>
+          <a v-if="scope.row.activity_type===2" :href="qRCodePrefix + scope.row.id " download="二维码" class="color-link" target="_blank">二维码</a>
+          <!--<el-popover v-if="scope.row.activity_type=2" placement="bottom" trigger="hover">-->
+            <!--<img style="width: 200px" :src="qRCodePrefix + scope.row.id " alt="" />-->
+            <!--<el-button type="text" slot="reference">二维码</el-button>-->
+          <!--</el-popover>-->
+
+          <a v-if="scope.row.activity_type===2" :href="ExportActivityInfo + + scope.row.id" target="_blank" class="color-link">导出活动详情</a>
         </template>
       </el-table-column>
     </el-table>

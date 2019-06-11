@@ -10,6 +10,13 @@
         </el-radio-group>
       </el-form-item>
 
+      <el-form-item label="状态">
+        <el-radio-group v-model="form.activity_type">
+          <el-radio :label="1">下架</el-radio>
+          <el-radio :label="2">上架</el-radio>
+        </el-radio-group>
+      </el-form-item>
+
       <el-form-item label="名称">
         <el-input v-model="form.coupon_name"></el-input>
       </el-form-item>
@@ -39,7 +46,7 @@
           <el-date-picker
             v-model="form.couponTime"
             type="datetimerange"
-            value-format="yyyy-MM-ddTHH:mm:ss"
+            value-format="yyyy-MM-ddTHH:mm:ss+08:00"
             range-separator="至"
             start-placeholder="开始日期"
             :picker-options="{
@@ -55,7 +62,7 @@
           <el-date-picker
             v-model="form.activityTime"
             type="datetimerange"
-            value-format="yyyy-MM-ddTHH:mm:ss"
+            value-format="yyyy-MM-ddTHH:mm:ss+08:00"
             range-separator="至"
             start-placeholder="开始日期"
             :picker-options="{
@@ -100,6 +107,7 @@
         searchName: '',
         form: {
           coupon_type: 1,
+          activity_type: 2,
           coupon_money: '',
           coupon_name: '',
           coupon_remarks: '',
@@ -135,10 +143,10 @@
         if (!this.form.couponTime.length || !this.form.activityTime.length) {
           this.$message.error('请设置日期')
         }
-        this.form.coupon_start_period = this.form.couponTime[0] + '+08:00'
-        this.form.coupon_end_period = this.form.couponTime[1] + '+08:00'
-        this.form.activity_start_time = this.form.activityTime[0] + '+08:00'
-        this.form.activity_end_time = this.form.activityTime[1] + '+08:00'
+        this.form.coupon_start_period = this.form.couponTime[0]
+        this.form.coupon_end_period = this.form.couponTime[1]
+        this.form.activity_start_time = this.form.activityTime[0]
+        this.form.activity_end_time = this.form.activityTime[1]
 
         if (this.id) {
           let params = Object.assign({ id: this.id }, this.form)
