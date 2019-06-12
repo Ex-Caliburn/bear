@@ -58,11 +58,11 @@
       </el-table-column>
 
       <el-table-column
-        label="上架中"
+        label="活动类型"
         width="100"
         prop="coupon_status">
         <template slot-scope="scope">
-          {{ scope.row.activity_type === 2 ? '是' : '否'  }}
+          {{ scope.row.activity_type === 2 ? '特定活动' : '系统活动'  }}
         </template>
       </el-table-column>
 

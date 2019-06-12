@@ -10,10 +10,10 @@
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="状态">
+      <el-form-item label="活动类型">
         <el-radio-group v-model="form.activity_type">
-          <el-radio :label="1">下架</el-radio>
-          <el-radio :label="2">上架</el-radio>
+          <el-radio :label="1">系统活动</el-radio>
+          <el-radio :label="2">特定活动</el-radio>
         </el-radio-group>
       </el-form-item>
 
