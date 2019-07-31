@@ -5,6 +5,7 @@ export default {
     coupon: '优惠券',
     couponActivityList: '优惠券活动',
     invite: '邀请统计',
+    consume: '消费数据',
     questionDetail: '问题详情',
     pSDetail: '研究生详情',
     complaint: '投诉',

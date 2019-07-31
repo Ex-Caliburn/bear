@@ -144,7 +144,22 @@ export const constantRouterMap = [
       name: 'complaint',
       meta: { title: 'complaint', icon: 'message', noCache: true }
     }]
-  }
+  },
+  {
+    path: '/consume',
+    component: Layout,
+    redirect: '/consume/index',
+    meta: {
+      title: 'consume',
+      icon: 'message'
+    },
+    children: [{
+      path: 'consume',
+      component: _import('consume/index'),
+      name: 'consume',
+      meta: { title: 'consume', icon: 'message', noCache: true }
+    }]
+  },
 ]
 
 export default new Router({

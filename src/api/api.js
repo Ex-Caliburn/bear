@@ -29,6 +29,8 @@ class Api {
   /* 邀请 */
   getUserInviteRecord = 'UserC/GetUserInviteRecord' // 查看发起邀请用户数据
   getUserInviteUserInfo = 'UserC/GetUserInviteUserInfo' // 查看用户邀请的所有记录
+  /* 订单 */
+  getOrderList = '/Order/OrderInfo' // 获取订单信息
   getApi (name) {
     return base + this[name]
   }

@@ -7,7 +7,10 @@
         <el-radio-button :label="3">现金体验券</el-radio-button>
       </el-radio-group>
 
-      <router-link class="fake-btn" :to="{name: 'createCoupon',params: {id: 0}}">新建券</router-link>
+      <div>
+        <router-link class="fake-btn MR20" :to="{name: 'createCoupon',params: {id: 0}}">新建券</router-link>
+        <el-button type="success" @click="exports">导出</el-button>
+      </div>
     </div>
 
     <el-table
@@ -133,6 +136,7 @@
 
 <script>
   import { dateFormat } from '@/utils/'
+  import {ENV_URL} from '@/utils/const'
   import request from '@/api/request'
   import pagination from '@/mixins/pagination'
 
@@ -182,6 +186,9 @@
       },
       search() {
         this.init()
+      },
+      exports() {
+        window.location.href = `${ENV_URL.exportCouponInfoByCouponType}?coupon_type=${this.couponType}`
       },
       distribute() {
         request.get('updCouponToUser', {
