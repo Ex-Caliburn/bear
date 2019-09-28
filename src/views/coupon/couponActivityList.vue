@@ -40,6 +40,21 @@
       </el-table-column>
 
       <el-table-column
+        label="邀请人数限制"
+        width="110"
+        prop="invite_num">
+      </el-table-column>
+
+      <el-table-column
+        label="受邀请人优惠券金额"
+        width="140"
+        prop="invite_user_money">
+        <template slot-scope="scope">
+          {{ scope.row.invite_user_money ? '冻结' : '正常'  }}
+        </template>
+      </el-table-column>
+
+      <el-table-column
         label="商品图片"
         width="100"
         prop="activity_image">
@@ -62,7 +77,7 @@
         width="100"
         prop="coupon_status">
         <template slot-scope="scope">
-          {{ scope.row.activity_type === 2 ? '特定活动' : '系统活动'  }}
+          {{ ['', '特定活动', '系统活动', '红包瓜分活动', '支付完成后的活动'][scope.row.activity_type]}}
         </template>
       </el-table-column>
 
@@ -174,7 +189,7 @@
     directives: {},
     data() {
       return {
-        couponTypeArr: ['折扣券', '免费体验券', ':现金体验券'],
+        couponTypeArr: ['折扣券', '免费体验券', '现金体验券'],
         tableData: [],
         couponType: 1,
         qRCodePrefix: window.location.origin + '/api/Image/GetMiniAppQRCode?scene=b',

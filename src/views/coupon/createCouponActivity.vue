@@ -14,6 +14,8 @@
         <el-radio-group v-model="form.activity_type">
           <el-radio :label="1">系统活动</el-radio>
           <el-radio :label="2">特定活动</el-radio>
+          <el-radio :label="3">红包瓜分活动 </el-radio>
+          <el-radio :label="4">支付完成后的活动</el-radio>
         </el-radio-group>
       </el-form-item>
 
@@ -21,8 +23,17 @@
         <el-input v-model="form.coupon_name"></el-input>
       </el-form-item>
 
-      <el-form-item label="折扣金额">
+      <!--v-if="[1,2].includes(form.activity_type)"-->
+      <el-form-item  label="折扣金额">
         <el-input-number :disabled="Boolean(id)" v-model="form.coupon_money" :min="1"></el-input-number>
+      </el-form-item>
+
+      <el-form-item label="邀请的用户数">
+        <el-input-number :disabled="Boolean(id)" v-model="form.invite_num" :min="2"></el-input-number> 人
+      </el-form-item>
+
+      <el-form-item label="受邀请人获得优惠券金额">
+        <el-input-number :disabled="Boolean(id)" v-model="inviteUserMoney" :min="1"></el-input-number> 元
       </el-form-item>
 
       <el-form-item label="活动图片">
@@ -87,6 +98,7 @@
   import {ENV_URL} from '@/utils/const'
   import pagination from '@/mixins/pagination'
   import { dateFormat } from '@/utils/'
+  import precision from 'number-precision'
 
   import avatar from '@/components/avatar'
 
@@ -116,6 +128,8 @@
           activity_end_time: '',
           activity_start_time: '',
           activity_image: '',
+          invite_user_money: 0,
+          invite_num: 0,
           couponTime: [],
           activityTime: [],
         }
@@ -127,6 +141,16 @@
       }
     },
 
+    computed: {
+      inviteUserMoney: {
+        get() {
+         return precision.divide(this.form.invite_user_money, 100)
+        },
+        set(val) {
+          this.form.invite_user_money = val* 100
+        },
+      }
+    },
     methods: {
       init() {
         request.get('getCouponActivityInfoById', {activity_id: this.id})
@@ -187,7 +211,9 @@
 
 <style lang="scss" scoped>
   .form {
-    width: 600px;
+    width: 100%;
+    min-width: 600px;
+    max-width: 900px;
   }
 
   .avatar {
