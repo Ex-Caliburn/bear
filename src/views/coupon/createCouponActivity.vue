@@ -147,7 +147,7 @@
          return precision.divide(this.form.invite_user_money, 100)
         },
         set(val) {
-          this.form.invite_user_money = val* 100
+          this.form.invite_user_money = val
         },
       }
     },
