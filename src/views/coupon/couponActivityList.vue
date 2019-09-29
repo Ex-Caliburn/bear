@@ -50,7 +50,7 @@
         width="140"
         prop="invite_user_money">
         <template slot-scope="scope">
-          {{ scope.row.invite_user_money ? '冻结' : '正常'  }}
+          {{scope.row.invite_user_money}}
         </template>
       </el-table-column>
 
