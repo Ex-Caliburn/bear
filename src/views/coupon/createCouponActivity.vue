@@ -144,7 +144,7 @@
     computed: {
       inviteUserMoney: {
         get() {
-         return precision.divide(this.form.invite_user_money, 100)
+         return this.form.invite_user_money
         },
         set(val) {
           this.form.invite_user_money = val
