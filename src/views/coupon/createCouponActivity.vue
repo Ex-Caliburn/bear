@@ -29,7 +29,7 @@
       </el-form-item>
 
       <el-form-item label="邀请的用户数">
-        <el-input-number :disabled="Boolean(id)" v-model="form.invite_num" :min="2"></el-input-number> 人
+        <el-input-number :disabled="Boolean(id)" v-model="form.invite_num" :min="1"></el-input-number> 人
       </el-form-item>
 
       <el-form-item label="受邀请人获得优惠券金额">
