@@ -25,15 +25,15 @@
 
       <!--v-if="[1,2].includes(form.activity_type)"-->
       <el-form-item  label="折扣金额">
-        <el-input-number :disabled="Boolean(id)" v-model="form.coupon_money" :min="1"></el-input-number>
+        <el-input-number :disabled="Boolean(id)" v-model="form.coupon_money" :min="0"></el-input-number>
       </el-form-item>
 
       <el-form-item label="邀请的用户数">
-        <el-input-number :disabled="Boolean(id)" v-model="form.invite_num" :min="1"></el-input-number> 人
+        <el-input-number :disabled="Boolean(id)" v-model="form.invite_num" :min="0"></el-input-number> 人
       </el-form-item>
 
       <el-form-item label="受邀请人获得优惠券金额">
-        <el-input-number :disabled="Boolean(id)" v-model="inviteUserMoney" :min="1"></el-input-number> 元
+        <el-input-number :disabled="Boolean(id)" v-model="inviteUserMoney" :min="0"></el-input-number> 元
       </el-form-item>
 
       <el-form-item label="活动图片">
