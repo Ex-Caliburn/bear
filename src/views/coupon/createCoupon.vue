@@ -15,11 +15,11 @@
       </el-form-item>
 
       <el-form-item label="折扣金额">
-        <el-input-number v-model="form.coupon_money" :min="1"></el-input-number>
+        <el-input-number v-model="form.coupon_money" :min="0"></el-input-number>
       </el-form-item>
 
       <el-form-item label="数量">
-        <el-input-number v-model="form.coupon_number" :min="1"></el-input-number>
+        <el-input-number v-model="form.coupon_number" :min="0"></el-input-number>
         <!--<el-input v-model="form.coupon_number"></el-input>-->
       </el-form-item>
 
