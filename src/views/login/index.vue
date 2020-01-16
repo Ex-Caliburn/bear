@@ -2,9 +2,11 @@
   <div class="login-container">
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm"
              label-position="left">
-      <div class="title-container">
-        <h3 class="title">{{$t('login.title')}}</h3>
-      </div>
+
+      <img src="~@/assets/WHITEBEAR_LOGO.png" class="logo MB20">
+<!--      <div class="title-container">-->
+<!--        <h3 class="title">{{$t('login.title')}}</h3>-->
+<!--      </div>-->
       <el-form-item prop="email">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user"/>
@@ -37,6 +39,9 @@
       <social-sign/>
     </el-dialog>
 
+    <div class="bottom-center">
+      <a class="color-link" href="http://beian.miit.gov.cn">备案号：粤 ICP 备 18072786 号  </a>
+    </div>
   </div>
 </template>
 
@@ -175,8 +180,16 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background: url('~@/assets/tree.jpg') no-repeat top left;
+    background-color: white;
+    /*background: white url('~@/assets/tree.jpg') no-repeat top left;*/
     background-size: 100% 100%;
+
+    .bottom-center{
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
     .login-form {
       position: absolute;
@@ -185,8 +198,13 @@
       width: 520px;
       padding: 35px 35px 15px 35px;
       margin: 120px auto;
+      background-color: white;
     }
 
+
+    .logo{
+      width: 520px;
+    }
     .tips {
       font-size: 14px;
       color: #fff;
