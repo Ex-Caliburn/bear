@@ -40,7 +40,7 @@
     </el-dialog>
 
     <div class="bottom-center">
-      <a class="color-link" href="http://beian.miit.gov.cn">备案号：粤 ICP 备 18072786 号  </a>
+      <a class="color-link" href="http://beian.miit.gov.cn">深圳市白熊洗护科技有限公司 版权所有 备案号：粤 ICP 备 18072786 号  </a>
     </div>
   </div>
 </template>

@@ -29,20 +29,21 @@ Vue.use(Router)
  **/
 export const constantRouterMap = [
   { path: '/login',  name: 'login', component: _import('login/index'), hidden: true },
+  { path: '/',  name: 'login', component: _import('login/index'), hidden: true },
   { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
   { path: '/401', component: _import('errorPage/401'), hidden: true },
-  {
-    path: '',
-    component: Layout,
-    redirect: 'dashboard',
-    children: [{
-      path: 'dashboard',
-      component: _import('dashboard/index'),
-      name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
-    }]
-  },
+  // {
+  //   path: '',
+  //   component: Layout,
+  //   redirect: 'dashboard',
+  //   children: [{
+  //     path: 'dashboard',
+  //     component: _import('dashboard/index'),
+  //     name: 'dashboard',
+  //     meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+  //   }]
+  // },
   {
     path: '/goods',
     component: Layout,
@@ -159,7 +160,7 @@ export const constantRouterMap = [
       name: 'consume',
       meta: { title: 'consume', icon: 'message', noCache: true }
     }]
-  },
+  }, 
 ]
 
 export default new Router({
